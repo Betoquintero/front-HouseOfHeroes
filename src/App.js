@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import ErrorPage from './views/ErrorPage';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
+import Issues from './views/Issues';
+import IssueDetails from './components/IssueDetails';
 import PrivateView from './views/PrivateView';
 import IsPrivate from './components/IsPrivate';
 
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/issues" element={<Issues />} />
+        <Route path="/issues/:id" element={<IssueDetails />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
