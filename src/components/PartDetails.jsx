@@ -8,14 +8,14 @@ export default function ProjectDetails() {
   const { id } = useParams();
   const storedToken = localStorage.getItem('authToken');
   const navigate = useNavigate();
-  const [issue, setIssue] = useState(null);
+  const [part, setPart] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/issues/${id}`)
+        const response = await axios.get(`http://localhost:8000/api/v1/parts/${id}`)
         //console.log(response);
-        setIssue(response.data.data)
+        setPart(response.data.data)
       } catch (error) {
         console.error(error);
       }
@@ -25,8 +25,8 @@ export default function ProjectDetails() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/issues/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
-      toast.success('Issue deleted successfully')
+      await axios.delete(`http://localhost:8000/api/v1/parts/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      toast.success('Project deleted successfully')
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -35,16 +35,16 @@ export default function ProjectDetails() {
 
   return (
     <div>
-      <p>Issue Details</p>
-      {issue && (
+      <p>Part details</p>
+      {part && (
         <div>
-          <h6>Project: {issue.name}</h6>
-          <p>Description: {issue.description}</p>
+          <h6>Project: {part.name}</h6>
+          <p>Description: {part.description}</p>
 
-          <button onClick={handleDelete}>Delete issue</button>
-          <button onClick={() => navigate(`/issues/edit/${id}`)}>Edit issue</button>
+          <button onClick={handleDelete}>Delete part</button>
+          <button onClick={() => navigate(`/edit/${id}`)}>Edit part</button>
         </div>)}
-      {!issue && <p>Issue not found</p>}
+      {!part && <p>Part not found</p>}
     </div>
   )
 }
