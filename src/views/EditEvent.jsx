@@ -5,7 +5,7 @@ import axios from 'axios';
 export default function EditProject() {
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  const { id, } = useParams();
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
@@ -45,11 +45,13 @@ export default function EditProject() {
       {!event && <p>Loading</p>}
       {event && (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="universe" placeholder="DC or MARVEL" value={issue.universe} onChange={handleChange} />
-            <input type="text" name="name" placeholder="Issue name" value={issue.name} onChange={handleChange} />
-            <input type="text" name="years" placeholder="Publication year(s)" value={issue.years} onChange={handleChange} />
-            <input type="text" name="description" placeholder="Description" value={issue.description} onChange={handleChange} />
-            <input type="text" name="summary" placeholder="Issue summary" value={issue.summary} onChange={handleChange} /> 
+            <input type="text" name="universe" placeholder="DC or MARVEL" value={event.universe} onChange={handleChange} />
+            <input type="text" name="name" placeholder="Issue name" value={event.name} onChange={handleChange} />
+            <input type="text" name="years" placeholder="Publication year(s)" value={event.years} onChange={handleChange} />
+            <input type="text" name="previousEvent" placeholder="Previous event" value={event.previousEvent} onChange={handleChange} />
+            <input type="text" name="nextEvent" placeholder="Next event" value={event.nextEvent} onChange={handleChange} />
+            <input type="text" name="description" placeholder="Description" value={event.description} onChange={handleChange} />
+            <input type="text" name="summary" placeholder="Issue summary" value={event.summary} onChange={handleChange} /> 
           <button type="submit">Save changes</button>
         </form>
       )}

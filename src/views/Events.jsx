@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Issues() {
   const [events, setEvents] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -21,13 +23,14 @@ export default function Issues() {
 
   return (
     <>
-    <div>Issues</div>
+    <div>Events</div>
         <div>
-      <h3>Check out my projects:</h3>
+      <h3>All events:</h3>
       {!events && <p>Loading</p>}
       {events && events.map(event => {
         return <p key={event._id}><Link to={`/events/${event._id}`}>{event.name}</Link></p>
       })}
+      <button onClick={() => navigate(`/events/create`)}>Create event</button>
       <Outlet />
     </div>
     </>

@@ -12,8 +12,12 @@ import CreateIssue from './views/CreateIssue';
 import EditIssue from './views/EditIssue';
 import Events from './views/Events';
 import EventDetails from './components/EventDetails';
+import CreateEvent from './views/CreateEvent';
+import EditEvent from './views/EditEvent';
 import Parts from './views/Parts';
 import PartDetails from './components/PartDetails';
+import CreatePart from './views/CreatePart';
+import EditPart from './views/EditPart';
 import PrivateView from './views/PrivateView';
 import IsPrivate from './components/IsPrivate';
 
@@ -32,8 +36,12 @@ function App() {
         <Route path="/issues/edit/:id" element={<EditIssue />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/events/create" element={<CreateEvent />} />
+        <Route path="/events/edit/:id" element={<EditEvent />} />
         <Route path="/parts/:universe" element={<Parts />} />
-        <Route path="/parts/:id" element={<PartDetails />} />
+        <Route path="/parts/:universe/:id" element={<PartDetails />} />
+        <Route path="/parts/create" element={<CreatePart />} />
+        <Route path="/parts/edit/:universe/:id" element={<EditPart />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

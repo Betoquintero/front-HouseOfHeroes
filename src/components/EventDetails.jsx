@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link }from 'react-router-dom';
 
 export default function ProjectDetails() {
   // const params = useParams(); then use with params.id
@@ -40,9 +41,23 @@ export default function ProjectDetails() {
         <div>
           <h6>Project: {event.name}</h6>
           <p>Description: {event.description}</p>
+          <div  className="cardsContainer">
+          {event.issues && event.issues.map(issue => {
+        return ( 
+          <div key={issue._id} className='card'>
+          <Link to={`/issues/${issue._id}`}>
+            <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
+            <div className="container">
+                <h4><b>{issue.name}</b></h4>             
+            </div> 
+          </Link>
+        </div>
+        )
+      })}
+      </div> 
 
           <button onClick={handleDelete}>Delete event</button>
-          <button onClick={() => navigate(`/edit/${id}`)}>Edit event</button>
+          <button onClick={() => navigate(`/events/edit/${id}`)}>Edit event</button>
         </div>)}
       {!event && <p>Event not found</p>}
     </div>

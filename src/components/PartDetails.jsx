@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link }from 'react-router-dom';
 
 export default function ProjectDetails() {
   // const params = useParams(); then use with params.id
-  const { id } = useParams();
+  const { id, universe } = useParams();
   const storedToken = localStorage.getItem('authToken');
   const navigate = useNavigate();
   const [part, setPart] = useState(null);
@@ -13,7 +14,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/parts/${id}`)
+        const response = await axios.get(`http://localhost:8000/api/v1/parts/${universe}/${id}`)
         //console.log(response);
         setPart(response.data.data)
       } catch (error) {
@@ -21,7 +22,7 @@ export default function ProjectDetails() {
       }
     }
     getData();
-  }, [id]);
+  }, [id, universe]);
 
   const handleDelete = async () => {
     try {
@@ -38,12 +39,26 @@ export default function ProjectDetails() {
       <p>Part details</p>
       {part && (
         <div>
-          <h6>Project: {part.name}</h6>
+          <h6>Part: {part.name}</h6>
           <p>Description: {part.description}</p>
-
+          <div  className="cardsContainer">
+          {part.events && part.events.map(event => {
+        return ( 
+            <div key={event._id} className='card'>
+            <Link to={`/events/${event._id}`}>
+                <img src={event.image} alt="Issue" style= {{width:"100%"}} />
+                <div className="container">
+                    <h4><b>{event.name}</b></h4> 
+                </div>
+            </Link>
+        </div>
+        )
+      })}
+        </div> 
           <button onClick={handleDelete}>Delete part</button>
-          <button onClick={() => navigate(`/edit/${id}`)}>Edit part</button>
+          <button onClick={() => navigate(`/parts/edit/${part.universe}/${id}`)}>Edit part</button>
         </div>)}
+        
       {!part && <p>Part not found</p>}
     </div>
   )
