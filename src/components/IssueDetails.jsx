@@ -30,6 +30,8 @@ export default function ProjectDetails() {
     try {
       await axios.post(`http://localhost:8000/api/v1/comments/${id}`, newComment, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Comment created successfully')
+      const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`)      
+      setComment(response.data.data)
       
     } catch (error) {
       console.error(error);

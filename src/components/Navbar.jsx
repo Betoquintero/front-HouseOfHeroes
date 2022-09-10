@@ -6,10 +6,10 @@ export default function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <div>
-      {user && <p>Hello {user.username}</p> }
+    <div className='navBar'>
+      {/* {user && <p>Hello {user.username}</p> } */}
       <ul>
-        <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/">Home</NavLink></li>
+        <li><NavLink className= {(element) => element.isActive ? 'selected ' : ''} to="/">Home</NavLink></li>
         {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup">Sign up</NavLink></li>}
         {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login">Login</NavLink></li>}
         {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/private">Private view</NavLink></li>}

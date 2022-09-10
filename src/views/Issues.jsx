@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/SearchBar'
 
 export default function Issues() {
-  const [issues, setIssues] = useState(null);
+  const [issues, setIssues] = useState('');
   const navigate = useNavigate();
   
 
@@ -18,11 +18,21 @@ export default function Issues() {
     }
 }
 
+// const handleSearch = useEffect((searchValue) => {  
+//     if (searchValue===''){
+//         setIssues(issues)
+//     }else{
+//         const filtered = issues.filter(elem => elem.name.toLowerCase().includes((searchValue).toLowerCase()))
+//         setIssues(filtered)
+//     }
+//     handleSearch()
+// }, [issues])
+
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/v1/issues')
-        //console.log(response)
+        console.log(response.data.data)
         setIssues(response.data.data);
       } catch (error) {
         console.error(error)
