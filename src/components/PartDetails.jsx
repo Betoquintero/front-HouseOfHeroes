@@ -36,11 +36,17 @@ export default function ProjectDetails() {
 
   return (
     <div>
-      <p>Part details</p>
+      
       {part && (
-        <div>
-          <h6>Part: {part.name}</h6>
-          <p>Description: {part.description}</p>
+        <div className="grid-container">
+        <div className= {universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
+        <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+        <div className="item item-3">
+            <div className="infoCard">
+                <p>Part: {part.name}</p>
+                <p>Years published: {part.years}</p>
+                <p>Description: {part.description}</p>
+            </div>
           <div  className="cardsContainer">
           {part.events && part.events.map(event => {
         return ( 
@@ -55,11 +61,15 @@ export default function ProjectDetails() {
         )
       })}
         </div> 
-          <button onClick={handleDelete}>Delete part</button>
-          <button onClick={() => navigate(`/parts/edit/${part.universe}/${id}`)}>Edit part</button>
-        </div>)}
+          <button className= {universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete part</button>
+          <button className= {universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/parts/edit/${part.universe}/${id}`)}>Edit part</button>
+          </div>
+          <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div>
+        </div>
+        )}
         
       {!part && <p>Part not found</p>}
+      
     </div>
   )
 }

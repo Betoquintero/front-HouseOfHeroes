@@ -7,11 +7,11 @@ import marvelLogo from '../img/Marvel_Logo.svg.png'
 export default function Home() {
   return (
     <div className="grid-container">
-      <div class="item item-1">
+      <div className="item item-1 backgroundImgHome">
         
       </div>
-      <div class="item item-2">2</div>  
-      <div class="item item-3">3
+      <div className="item item-2 gridDc">2</div>  
+      <div className="item item-3">3
         <div className="genCard">
           <p>Welcome to House of heroes, the best page of the comics community</p> 
         </div>
@@ -26,7 +26,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div class="item item-4">4</div>    
+      <div className="item item-4 gridMarvel">4</div>    
     </div>
   )
 }

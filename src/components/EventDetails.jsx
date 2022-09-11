@@ -33,33 +33,44 @@ export default function ProjectDetails() {
       console.error(error);
     }
   }
+ 
 
   return (
-    <div>
-      <p>Event details</p>
-      {event && (
-        <div>
-          <h6>Project: {event.name}</h6>
-          <p>Description: {event.description}</p>
-          <div  className="cardsContainer">
-          {event.issues && event.issues.map(issue => {
-        return ( 
-          <div key={issue._id} className='card'>
-          <Link to={`/issues/${issue._id}`}>
-            <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
-            <div className="container">
-                <h4><b>{issue.name}</b></h4>             
-            </div> 
-          </Link>
-        </div>
-        )
-      })}
-      </div> 
+    <>
+      
+      {event && (        
+        <div className="grid-container">
+        <div className= {event.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
+        <div className= {event.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+        <div className="item item-3">
+          <div className="infoCard">          
+            <p>Event: {event.name}</p>
+            <p>Year published: {event.years}</p>
+            <p>Description: {event.description}</p>
+          </div>
+            <div  className="cardsContainer">
+            {event.issues && event.issues.map(issue => {
+          return ( 
+            <div key={issue._id} className='card'>
+            <Link to={`/issues/${issue._id}`}>
+              <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
+              <div className="container">
+                  <h4>{issue.name}</h4>             
+              </div> 
+            </Link>
+          </div>
+          )
+        })}
+        </div> 
 
-          <button onClick={handleDelete}>Delete event</button>
-          <button onClick={() => navigate(`/events/edit/${id}`)}>Edit event</button>
-        </div>)}
+            <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete event</button>
+            <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/events/edit/${id}`)}>Edit event</button>
+        </div>
+          <div className= {event.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div>
+        </div>
+        )}
       {!event && <p>Event not found</p>}
-    </div>
+    </>
   )
 }
+

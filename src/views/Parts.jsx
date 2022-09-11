@@ -24,18 +24,24 @@ export default function Issues() {
 
 
   return (
-    <>
-    <div>Parts</div>
-        <div>
-      <h3>Check out my projects:</h3>
-      {!parts && <p>Loading</p>}
-      {parts && parts.map(part => {
-        return <p key={part._id}><Link to={`/parts/${part.universe}/${part._id}`}>{part.name}</Link></p>
-      })}
-      <button onClick={() => navigate(`/events/create`)}>Create event</button>
-      <Outlet />
-    </div>
-    </>
+    <div className="grid-container">
+        <div className= {universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
+        <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+        <div className="item item-3">3
+
+        <div>Parts</div>
+            <div>
+        <h3>Parts:</h3>
+        {!parts && <p>Loading</p>}
+        {parts && parts.map(part => {
+            return <p key={part._id}><Link to={`/parts/${part.universe}/${part._id}`}>{part.name}</Link></p>
+        })}
+        <button onClick={() => navigate(`/events/create`)}>Create Part</button>
+        <Outlet />
+        </div>
+        </div>
+        <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div> 
+        </div>
 
   )
 }

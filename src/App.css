@@ -22,9 +22,6 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -34,11 +31,17 @@ footer, header, hgroup, menu, nav, section {
 
 :root {
   --marvel-red: #EC1D24;
-  --light-red: #EC1D24;
+  --light-red: #e4979a;
   --dc-blue: #0078F0;
   --light-blue: #0078F0;
   --dark-grey: #1E1F21;
   --light-grey: #D9D9D9;
+}
+
+h4{
+  text-decoration:none;
+  font-size: small;
+  text-align: center;
 }
 
 /* NavBar */
@@ -69,7 +72,7 @@ flex-wrap: wrap;
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 200px;
+  width: 120px;
   margin: 30px;
   border-radius: 10px;
 }
@@ -81,21 +84,27 @@ flex-wrap: wrap;
   text-align: center;
 }
 
-.homeGenCard{
-  
-}
-
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.infoCard{
+  background-color: var(--light-grey);
+  border-radius: 20px;
+  width: 550px;
+  text-align: justify;
+  margin-top: 30px;
+  margin-left: 20px;
+  padding: 15px;
+  line-height: 1.6; 
 }
 
 /* Grid */
 .grid-container {
   display: grid;
-  height: 100vh;
+  min-height: 1500px;
   grid-template-columns: repeat(3, 33%);
-  grid-template-rows: repeat(3, 33%);
- 
+  grid-template-rows: repeat(3, 33%); 
 }
 
 .item {
@@ -104,30 +113,94 @@ flex-wrap: wrap;
   height: 100%;
 }
 
+.backgroundImgHome{
+  background-image: url('../src/img/marvel-dc-home.png');
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.backgroundImgDc{
+  background-image: url('../src/img/background-img-dc.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.backgroundImgMarvel{
+  background-image: url('../src/img/background-img-marvel.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
 
 
 .item-1 {
   grid-column: 1 / span 3;
-  grid-row: 1 / span 1;
-  background-image: url('../src/img/marvel-dc-home.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  
+  grid-row: 1 / span 1; 
 }
+
 
 .item-2 {
   grid-column: 1 / span 1;
-  grid-row: 2 / span 2;
-  background-color: var(--dc-blue);
+  grid-row: 2 / span 2;  
 }
 
 .item-3 {
-  grid-column: 2 / span 2;
+  grid-column: 2 / span 1;
   grid-row: 2 / span 2;
 }
 
 .item-4 {
   grid-column: 3 / span 1;
-  grid-row: 2 / span 2;
+  grid-row: 2 / span 2;  
+}
+
+.gridDc{
+  background-color: var(--dc-blue);
+}
+
+.gridMarvel{
   background-color: var(--marvel-red);
 }
+
+
+
+/* Buttons */
+
+.buttonDc{  
+    border: 2px solid #FFF;
+    border-radius: 2em;    
+    background-color: var(--light-blue);
+    color: #FFF;
+    font-size: larger;
+    width: 200px;
+    height: 40px;
+    margin-left: 67px;
+    margin-top: 30px;
+  }
+  
+.buttonDc:hover {
+    opacity: 0.70; 
+    background-color: var(--light-blue);
+    color: #626254;
+    cursor: grab;
+  }
+
+  .buttonMarvel{  
+    border: 2px solid #FFF;
+    border-radius: 2em;    
+    background-color: var(--marvel-red);
+    color: #FFF;
+    font-size: larger;
+    width: 200px;
+    height: 40px;
+    margin-left: 67px;
+    margin-top: 30px;
+  }
+  
+.buttonMarvel:hover {
+    opacity: 0.90; /* perception of emptiness */
+    background-color: var(--light-red);
+    color: #626254;
+    cursor: grab;
+  }
+
+
