@@ -41,13 +41,16 @@ export default function ProjectDetails() {
       {event && (        
         <div className="grid-container">
         <div className= {event.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
-        <div className= {event.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+        <div className= {event.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
         <div className="item item-3">
           <div className="infoCard">          
-            <p>Event: {event.name}</p>
-            <p>Year published: {event.years}</p>
-            <p>Description: {event.description}</p>
+            <h3>Event: {event.name}</h3>
+            <p><strong>Year published:</strong> {event.years}</p>
+            <p><strong>Description:</strong> {event.description}</p>
           </div>
+          <div className='titleOfDetailImage'><strong>Event Image</strong></div>
+          <div className='detailImage'><img src={event.image} style= {{width:"200px"}} alt='item img' /> </div>
+          <div className='titleOfDetailImage'><strong>Comics that belong to this event</strong></div>
             <div  className="cardsContainer">
             {event.issues && event.issues.map(issue => {
           return ( 
@@ -66,7 +69,7 @@ export default function ProjectDetails() {
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete event</button>
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/events/edit/${id}`)}>Edit event</button>
         </div>
-          <div className= {event.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div>
+          <div className= {event.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div>
         </div>
         )}
       {!event && <p>Event not found</p>}

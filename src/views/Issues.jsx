@@ -18,15 +18,6 @@ export default function Issues() {
     }
 }
 
-// const handleSearch = useEffect((searchValue) => {  
-//     if (searchValue===''){
-//         setIssues(issues)
-//     }else{
-//         const filtered = issues.filter(elem => elem.name.toLowerCase().includes((searchValue).toLowerCase()))
-//         setIssues(filtered)
-//     }
-//     handleSearch()
-// }, [issues])
 
   useEffect(() => {
     const getData = async () => {
@@ -66,7 +57,7 @@ export default function Issues() {
       })}
       
       </div> 
-      <button onClick={() => navigate(`/issues/create`)}>Create issue</button>
+      <button className='genericButton genButtonRest' onClick={() => navigate(`/issues/create`)}>Create issue</button>
       <Outlet />
       </div>
       <div className="item item-4 gridMarvel"></div>     

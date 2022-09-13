@@ -81,20 +81,25 @@ export default function ProjectDetails() {
       {issue && (        
         <div className="grid-container">
             <div className= {issue.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
-            <div className= {issue.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+            <div className= {issue.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
             <div className="item item-3">
                 <div className='infoCard'>        
-                    <h6>Issue: {issue.name}</h6>
-                    <p>Description: {issue.description}</p>
+                    <h3>Issue: {issue.name}</h3>
+                    <p><strong>Year published:</strong> {issue.years}    </p>
+                    <p><strong>Description:</strong> {issue.description}</p>
                 </div>
+                <div className='titleOfDetailImage'><strong>Issue Image</strong></div>
+                <div className='detailImage'><img src={issue.image} style= {{width:"200px"}} alt='item img' /> </div>
+                <div className='buttonContainer'>                            
           <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issue/create`)}>Create Issue</button>
           <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete issue</button>
           <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issues/edit/${id}`)}>Edit issue</button>
+                </div> 
+          <div className='titleOfDetailImage'><strong>Comments on this Issue</strong></div>
             <form className='form' onSubmit={handleSubmit}>        
                 <input className='formBox commentFormBox' type="text" name="comment" placeholder="Place your comment here..." value={newComment.comment} onChange={handleChange} />       
                 <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } type="submit" >Post Comment</button>
-            </form>      
-
+            </form>  
       {!comment && <p>No comments to show</p>}
       {comment && comment.map(elem => {
         return (
@@ -109,7 +114,7 @@ export default function ProjectDetails() {
         )
       })}
         </div>
-      <div className= {issue.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div>
+      <div className= {issue.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div>
     </div>
     )}
       {!issue && <p>Issue not found</p>}

@@ -26,22 +26,28 @@ export default function Issues() {
   return (
     <div className="grid-container">
         <div className= {universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
-        <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
-        <div className="item item-3">3
-
-        <div>Parts</div>
-            <div>
-        <h3>Parts:</h3>
+        <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
+        <div className="item item-3">        
+        <div>        
         {!parts && <p>Loading</p>}
+        <div className='cardsContainer'>
         {parts && parts.map(part => {
-            return <p key={part._id}><Link to={`/parts/${part.universe}/${part._id}`}>{part.name}</Link></p>
+            return (
+                <div className='partCard' key={part._id}>
+                <Link to={`/parts/${part.universe}/${part._id}`}>
+                    <p><strong>{part.name}</strong></p>
+                    <p>{part.description}</p>
+                </Link>
+                </div>
+            )
         })}
-        <button onClick={() => navigate(`/parts/create`)}>Create Part</button>
+        </div>        
+        <button className='genericButton genButtonRest' onClick={() => navigate(`/parts/create`)}>Create Part</button>
         <Outlet />
         </div>
         </div>
         <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div> 
-        </div>
+    </div>
 
   )
 }

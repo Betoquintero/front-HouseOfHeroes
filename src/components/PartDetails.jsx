@@ -40,13 +40,14 @@ export default function ProjectDetails() {
       {part && (
         <div className="grid-container">
         <div className= {universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
-        <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+        <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
         <div className="item item-3">
             <div className="infoCard">
-                <p>Part: {part.name}</p>
-                <p>Years published: {part.years}</p>
-                <p>Description: {part.description}</p>
+                <h3>{part.name}</h3>
+                <p><strong>Year published:</strong> {part.years}</p>
+                <p><strong>Description:</strong> {part.description}</p>
             </div>
+            <div className='titleOfDetailImage'><strong>Events that belong to this part</strong></div>
           <div  className="cardsContainer">
           {part.events && part.events.map(event => {
         return ( 

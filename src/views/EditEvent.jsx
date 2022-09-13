@@ -45,7 +45,8 @@ export default function EditProject() {
         <div className="grid-container"> 
             <div className="item item-1 backgroundImgHome"> </div>
             <div className="item item-2 gridDc"></div>
-            <div className="item item-3">       
+            <div className="item item-3">
+            <h2>Edit event</h2>      
                 <form className='form' onSubmit={handleSubmit}>
                     <input className='formBox' type="text" name="universe" placeholder="DC or MARVEL" value={event.universe} onChange={handleChange} />
                     <input className='formBox' type="text" name="name" placeholder="Issue name" value={event.name} onChange={handleChange} />
@@ -54,7 +55,7 @@ export default function EditProject() {
                     <input className='formBox' type="text" name="nextEvent" placeholder="Next event" value={event.nextEvent} onChange={handleChange} />
                     <input className='formBox' type="text" name="description" placeholder="Description" value={event.description} onChange={handleChange} />
                     <input className='formBox' type="text" name="summary" placeholder="Issue summary" value={event.summary} onChange={handleChange} /> 
-                <button type="submit">Save changes</button>
+                <button className='genericButton genButtonRest' type="submit">Save changes</button>
                 </form>
             </div>
             <div className="item item-4 gridMarvel"></div>

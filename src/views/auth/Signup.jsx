@@ -41,19 +41,25 @@ export default function Signup() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="grid-container">
+      <div className="item item-1 backgroundImgHome"></div>
+      <div className="item item-2 gridDc"></div>  
+      <div className="item item-3">
+      <h2>Sign up</h2>
+      <form className='form' onSubmit={handleSubmit}>
         <label>Username</label>
-        <input required type="text" name="username" value={user.username} onChange={handleChange} />
+        <input className='formBox' required type="text" name="username" value={user.username} onChange={handleChange} />
         <label>Email</label>
-        <input required type="email" name="email" value={user.email} onChange={handleChange} />
+        <input className='formBox' required type="email" name="email" value={user.email} onChange={handleChange} />
         <label>Password</label>
-        <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
+        <input className='formBox' required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
         <label>Repeat the password</label>
-        <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+        <input className='formBox' required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        <button type="submit">Register</button>
+        <button className='genericButton' type="submit">Register</button>
       </form>
+      </div>
+      <div className="item item-4 gridMarvel"></div> 
     </div>
   )
 }

@@ -2,11 +2,17 @@
   color: red;
 }
 
+p{
+  text-decoration: none;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
 
 :root {
   --marvel-red: #EC1D24;
@@ -15,6 +21,11 @@
   --light-blue: #0078F0;
   --dark-grey: #1E1F21;
   --light-grey: #D9D9D9;
+}
+
+h2{
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 
@@ -85,15 +96,27 @@ flex-wrap: wrap;
   text-align: justify;
   margin-top: 30px;
   margin-left: 20px;
+  padding: 10px;
+  line-height: 1.6; 
+}
+
+.partCard{
+  background-color: var(--light-grey);
+  border-radius: 20px;
+  width: 550px;
+  text-align: justify;
+  margin-top: 30px;
+  margin-left: 20px;
   padding: 15px;
   line-height: 1.6; 
 }
 
 /* Form */
 .form {
-  width: 100%;
-  /* margin-left: 5%;
-  margin-top: 20px; */
+  width: 90%;
+  margin-left: 20px;
+  margin-top: 20px;
+
 }
 
 .formBox {
@@ -197,17 +220,42 @@ flex-wrap: wrap;
     background-color: var(--marvel-red);
     color: #FFF;
     font-size: larger;
-    width: 200px;
+    width: 150px;
     height: 40px;
-    margin-left: 67px;
+    margin-left: 35px;
     margin-top: 30px;
   }
+
+  .buttonContainer{
+    margin-bottom:80px;
+  }  
   
 .buttonMarvel:hover {
     opacity: 0.90; /* perception of emptiness */
     background-color: var(--light-red);
     color: #626254;
     cursor: grab;
+  }
+
+  .genericButton {
+    background-color: #8194a0;
+    color: white;
+    font-family: Roboto Condensed;
+    font-size: 1.5em;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-width: 0px;
+    width: 30%;
+  }
+
+  .genButtonRest{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Comments */
@@ -222,17 +270,32 @@ flex-wrap: wrap;
     justify-content: flex-start;
     padding: 5px;
     margin : 10px;
+    margin-left: 30px;
     width: 100%;
   
   }
 
   .commentFormBox{
-    margin-top: 60px;
+    margin-top: 0px;
+    margin-left: 30px;
     width: 50%;
   }
 
   .profile-img {
     border-radius: 50%;
+  }
+
+  .detailImage{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .titleOfDetailImage{
+    text-align: center;
+    margin-top: 30px;
+    font-size:x-large;
   }
 
 
