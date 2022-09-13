@@ -3,30 +3,9 @@
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
 }
 
 :root {
@@ -38,6 +17,7 @@ footer, header, hgroup, menu, nav, section {
   --light-grey: #D9D9D9;
 }
 
+
 h4{
   text-decoration:none;
   font-size: small;
@@ -46,19 +26,29 @@ h4{
 
 /* NavBar */
 
-.navBar ul {
-  display: flex;
-  justify-content: space-around;  
-	
-	width: 100%;
-	height: 70px;
-	background: rgb(255, 255, 255);
+.navBar {
+  display: block;
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 80px;
+  padding: 5px 0;
+  background-color: white;
 }
 
-ul {
+.navBar ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding-inline-start: 0;
+}
+
+.navBar ul li {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  font-weight: bolder;
+}
+
+.navBar ul li a:hover {
+  background-color: rgb(161, 161, 161);
 }
 
 
@@ -99,10 +89,27 @@ flex-wrap: wrap;
   line-height: 1.6; 
 }
 
+/* Form */
+.form {
+  width: 100%;
+  /* margin-left: 5%;
+  margin-top: 20px; */
+}
+
+.formBox {
+  border-radius: 10px;
+  width: 100%;
+  border-width: 1px;
+  height: 40px;
+  margin: 5px 0 10px 0;
+  padding: 10px;
+  /* margin-top: 15px; */
+}
+
 /* Grid */
 .grid-container {
   display: grid;
-  min-height: 1500px;
+  min-height: 100vh;
   grid-template-columns: repeat(3, 33%);
   grid-template-rows: repeat(3, 33%); 
 }
@@ -171,9 +178,9 @@ flex-wrap: wrap;
     background-color: var(--light-blue);
     color: #FFF;
     font-size: larger;
-    width: 200px;
+    width: 150px;
     height: 40px;
-    margin-left: 67px;
+    margin-left: 35px;
     margin-top: 30px;
   }
   
@@ -201,6 +208,31 @@ flex-wrap: wrap;
     background-color: var(--light-red);
     color: #626254;
     cursor: grab;
+  }
+
+  /* Comments */
+  .commenting-user {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  
+  .comment-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    margin : 10px;
+    width: 100%;
+  
+  }
+
+  .commentFormBox{
+    margin-top: 60px;
+    width: 50%;
+  }
+
+  .profile-img {
+    border-radius: 50%;
   }
 
 

@@ -43,9 +43,11 @@ export default function Issues() {
 
 
   return (
-    <>
-    <div>Issues</div>
-        <div>
+    <div className="grid-container" >
+      <div className="item item-1 backgroundImgHome"></div>
+      <div className="item item-2 gridDc"></div>  
+      <div className="item item-3">
+      
       <h3>All Issues:</h3>
       <SearchBar onSearch= {handleSearch} />
       {!issues && <p>Loading</p>}
@@ -62,11 +64,13 @@ export default function Issues() {
           </div>
           )          
       })}
+      
       </div> 
       <button onClick={() => navigate(`/issues/create`)}>Create issue</button>
       <Outlet />
+      </div>
+      <div className="item item-4 gridMarvel"></div>     
     </div>
-    </>
 
   )
 }

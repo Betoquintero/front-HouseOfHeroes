@@ -64,7 +64,7 @@ export default function ProjectDetails() {
           <button className= {universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete part</button>
           <button className= {universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/parts/edit/${part.universe}/${id}`)}>Edit part</button>
           </div>
-          <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div>
+          <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div>
         </div>
         )}
         

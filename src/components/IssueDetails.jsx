@@ -77,32 +77,44 @@ export default function ProjectDetails() {
   }
 
   return (
-    <div>
-      <p>Issue Details</p>
-      {issue && (
-        <div>
-          <h6>Issue: {issue.name}</h6>
-          <p>Description: {issue.description}</p>
-
-          <button onClick={handleDelete}>Delete issue</button>
-          <button onClick={() => navigate(`/issues/edit/${id}`)}>Edit issue</button>
-        </div>)}
-      {!issue && <p>Issue not found</p>}
-
-      <form onSubmit={handleSubmit}>        
-        <input type="text" name="comment" placeholder="Place your comment here..." value={newComment.comment} onChange={handleChange} />       
-        <button type="submit">Save</button>
-      </form>      
+    <div>      
+      {issue && (        
+        <div className="grid-container">
+            <div className= {issue.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
+            <div className= {issue.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }>2</div>
+            <div className="item item-3">
+                <div className='infoCard'>        
+                    <h6>Issue: {issue.name}</h6>
+                    <p>Description: {issue.description}</p>
+                </div>
+          <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issue/create`)}>Create Issue</button>
+          <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete issue</button>
+          <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issues/edit/${id}`)}>Edit issue</button>
+            <form className='form' onSubmit={handleSubmit}>        
+                <input className='formBox commentFormBox' type="text" name="comment" placeholder="Place your comment here..." value={newComment.comment} onChange={handleChange} />       
+                <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } type="submit" >Post Comment</button>
+            </form>      
 
       {!comment && <p>No comments to show</p>}
       {comment && comment.map(elem => {
         return (
         <div key={elem._id}>
-            <p>{elem.userId.username} said:</p>
+        <div className="comment-block">
+            <img className="profile-img" width="20px" height="20px" src={elem.userId.imageUrl} alt='profile img'/>
+            <p className="commenting-user"><strong>{elem.userId.username}</strong></p> said:     
             <p>{elem.comment}</p>
+        </div>
+            
         </div>
         )
       })}
+        </div>
+      <div className= {issue.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div>
+    </div>
+    )}
+      {!issue && <p>Issue not found</p>}
+
+
       
 
     </div>

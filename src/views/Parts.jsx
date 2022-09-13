@@ -36,11 +36,11 @@ export default function Issues() {
         {parts && parts.map(part => {
             return <p key={part._id}><Link to={`/parts/${part.universe}/${part._id}`}>{part.name}</Link></p>
         })}
-        <button onClick={() => navigate(`/events/create`)}>Create Part</button>
+        <button onClick={() => navigate(`/parts/create`)}>Create Part</button>
         <Outlet />
         </div>
         </div>
-        <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }>4</div> 
+        <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div> 
         </div>
 
   )

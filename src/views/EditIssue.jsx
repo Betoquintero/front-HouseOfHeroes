@@ -40,19 +40,26 @@ export default function EditProject() {
   }
 
   return (
-    <div>
-      <h1>Edit Issue</h1>
+    <div>      
       {!issue && <p>Loading</p>}
       {issue && (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="universe" placeholder="DC or MARVEL" value={issue.universe} onChange={handleChange} />
-            <input type="text" name="name" placeholder="Issue name" value={issue.name} onChange={handleChange} />
-            <input type="text" name="years" placeholder="Publication year(s)" value={issue.years} onChange={handleChange} />
-            <input type="text" name="description" placeholder="Description" value={issue.description} onChange={handleChange} />
-            <input type="text" name="summary" placeholder="Issue summary" value={issue.summary} onChange={handleChange} /> 
-          <button type="submit">Save changes</button>
-        </form>
+        <div className="grid-container"> 
+            <div className="item item-1 backgroundImgHome"> </div>
+            <div className="item item-2 gridDc"></div>
+            <div className="item item-3">
+                <form className='form' onSubmit={handleSubmit}>
+                    <input className='formBox' type="text" name="universe" placeholder="DC or MARVEL" value={issue.universe} onChange={handleChange} />
+                    <input className='formBox' type="text" name="name" placeholder="Issue name" value={issue.name} onChange={handleChange} />
+                    <input className='formBox' type="text" name="years" placeholder="Publication year(s)" value={issue.years} onChange={handleChange} />
+                    <input className='formBox' type="text" name="description" placeholder="Description" value={issue.description} onChange={handleChange} />
+                    <input className='formBox' type="text" name="summary" placeholder="Issue summary" value={issue.summary} onChange={handleChange} /> 
+                <button type="submit">Save changes</button>
+                </form>
+            </div>
+            <div className="item item-4 gridMarvel"></div>
+        </div>
       )}
+      {!issue && <p>Loading</p>}
     </div>
   )
 }

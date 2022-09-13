@@ -61,8 +61,8 @@ export default function ProjectDetails() {
           </div>
           )
         })}
-        </div> 
-
+        </div>
+            <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/parts/create`)}>Create Part</button>
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete event</button>
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/events/edit/${id}`)}>Edit event</button>
         </div>
