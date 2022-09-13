@@ -23,7 +23,7 @@ export default function Issues() {
     const getData = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/v1/issues')
-        console.log(response.data.data)
+        //console.log(response.data.data)
         setIssues(response.data.data);
       } catch (error) {
         console.error(error)
@@ -46,7 +46,7 @@ export default function Issues() {
       {issues && issues.map(issue => {
         return (                
           <div key={issue._id} className='card'>
-            <Link to={`/issues/${issue._id}`}>
+            <Link className='links' to={`/issues/${issue._id}`}>
               <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
               <div className="container">
                 <h4><b>{issue.name}</b></h4>             

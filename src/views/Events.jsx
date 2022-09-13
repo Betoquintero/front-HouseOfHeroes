@@ -28,7 +28,7 @@ export default function Issues() {
       <h3>All events:</h3>
       {!events && <p>Loading</p>}
       {events && events.map(event => {
-        return <p key={event._id}><Link to={`/events/${event._id}`}>{event.name}</Link></p>
+        return <p key={event._id}><Link className='links' to={`/events/${event._id}`}>{event.name}</Link></p>
       })}
       <button onClick={() => navigate(`/events/create`)}>Create event</button>
       <Outlet />

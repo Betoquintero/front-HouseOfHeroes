@@ -34,7 +34,7 @@ export default function Issues() {
         {parts && parts.map(part => {
             return (
                 <div className='partCard' key={part._id}>
-                <Link to={`/parts/${part.universe}/${part._id}`}>
+                <Link className='links' to={`/parts/${part.universe}/${part._id}`}>
                     <p><strong>{part.name}</strong></p>
                     <p>{part.description}</p>
                 </Link>

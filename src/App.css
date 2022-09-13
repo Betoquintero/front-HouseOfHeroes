@@ -20,7 +20,7 @@ p{
   --dc-blue: #0078F0;
   --light-blue: #0078F0;
   --dark-grey: #1E1F21;
-  --light-grey: #D9D9D9;
+  --light-grey: #f5f4f4;
 }
 
 h2{
@@ -59,7 +59,7 @@ h4{
 }
 
 .navBar ul li a:hover {
-  background-color: rgb(161, 161, 161);
+  background-color: rgb(218, 214, 214);
 }
 
 
@@ -68,6 +68,7 @@ h4{
 .cardsContainer{
 display: flex;
 flex-wrap: wrap;
+justify-content: space-around;
 }
 
 .card {
@@ -78,11 +79,46 @@ flex-wrap: wrap;
   border-radius: 10px;
 }
 
-.genCard{
+.homeCard{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   background-color: var(--light-grey);
   border-radius: 20px;
-  width: 200px;
-  text-align: center;
+  width: 90%;
+  text-align: justify;
+  padding: 10px;
+  line-height: 1.6;
+}
+
+.logoCardContainer{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.marvelLogo{
+  margin-top: 20px;
+}
+
+.logoContainer img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;    
+}
+
+.logoCard{
+  background-color: var(--light-grey);
+  border-radius: 20px;
+  width: 250px;
+  padding: 20px;
+}
+
+.logoCard img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card:hover {
@@ -92,23 +128,28 @@ flex-wrap: wrap;
 .infoCard{
   background-color: var(--light-grey);
   border-radius: 20px;
-  width: 550px;
+  width: 90%;
   text-align: justify;
   margin-top: 30px;
-  margin-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 10px;
-  line-height: 1.6; 
+  line-height: 1.7; 
 }
 
 .partCard{
   background-color: var(--light-grey);
   border-radius: 20px;
-  width: 550px;
+  width: 80%;
   text-align: justify;
   margin-top: 30px;
   margin-left: 20px;
   padding: 15px;
   line-height: 1.6; 
+}
+
+.partCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
 }
 
 /* Form */
@@ -133,8 +174,8 @@ flex-wrap: wrap;
 .grid-container {
   display: grid;
   min-height: 100vh;
-  grid-template-columns: repeat(3, 33%);
-  grid-template-rows: repeat(3, 33%); 
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 32vh 100%;
 }
 
 .item {
@@ -201,7 +242,7 @@ flex-wrap: wrap;
     background-color: var(--light-blue);
     color: #FFF;
     font-size: larger;
-    width: 150px;
+    width: 300px;
     height: 40px;
     margin-left: 35px;
     margin-top: 30px;
@@ -220,7 +261,7 @@ flex-wrap: wrap;
     background-color: var(--marvel-red);
     color: #FFF;
     font-size: larger;
-    width: 150px;
+    width: 300px;
     height: 40px;
     margin-left: 35px;
     margin-top: 30px;
@@ -228,7 +269,12 @@ flex-wrap: wrap;
 
   .buttonContainer{
     margin-bottom:80px;
-  }  
+  } 
+  
+  .buttonContainerDetails{
+    display: flex;
+    justify-content: space-around;
+  }
   
 .buttonMarvel:hover {
     opacity: 0.90; /* perception of emptiness */
@@ -296,6 +342,11 @@ flex-wrap: wrap;
     text-align: center;
     margin-top: 30px;
     font-size:x-large;
+  }
+
+  .links{
+    text-decoration: none;
+    color: black;
   }
 
 

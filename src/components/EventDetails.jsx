@@ -55,7 +55,7 @@ export default function ProjectDetails() {
             {event.issues && event.issues.map(issue => {
           return ( 
             <div key={issue._id} className='card'>
-            <Link to={`/issues/${issue._id}`}>
+            <Link className='links' to={`/issues/${issue._id}`}>
               <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
               <div className="container">
                   <h4>{issue.name}</h4>             
@@ -65,9 +65,11 @@ export default function ProjectDetails() {
           )
         })}
         </div>
+        <div className='buttonContainerDetails'>
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/parts/create`)}>Create Part</button>
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete event</button>
             <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/events/edit/${id}`)}>Edit event</button>
+        </div>
         </div>
           <div className= {event.universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div>
         </div>

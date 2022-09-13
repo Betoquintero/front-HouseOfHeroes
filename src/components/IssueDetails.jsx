@@ -90,10 +90,10 @@ export default function ProjectDetails() {
                 </div>
                 <div className='titleOfDetailImage'><strong>Issue Image</strong></div>
                 <div className='detailImage'><img src={issue.image} style= {{width:"200px"}} alt='item img' /> </div>
-                <div className='buttonContainer'>                            
-          <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issue/create`)}>Create Issue</button>
-          <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete issue</button>
-          <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issues/edit/${id}`)}>Edit issue</button>
+                <div className='buttonContainer buttonContainerDetails'>                            
+                    <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issues/create`)}>Create Issue</button>
+                    <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={handleDelete}>Delete issue</button>
+                    <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } onClick={() => navigate(`/issues/edit/${id}`)}>Edit issue</button>
                 </div> 
           <div className='titleOfDetailImage'><strong>Comments on this Issue</strong></div>
             <form className='form' onSubmit={handleSubmit}>        
