@@ -36,22 +36,38 @@ export default function ProfileView() {
         <h5>This view can only be seen if the user is logged in because it's inside the IsPrivate component.</h5>
         <div  className="cardsContainer">
             {collection.events && collection.events.map(event => {
-          return ( 
+          return (
+            <>
             <div key={event._id} className='card'>
             <Link className='links' to={`/events/${event._id}`}>
               <img src={event.image} alt="Issue" style= {{width:"100%"}} />
               <div className="container">
                   <h4>{event.name}</h4>             
               </div> 
-            </Link>
-            <p>{event.issue}</p>
-          </div>          
+            </Link>            
+          </div>
+          <div  className="cardsContainer">
+            {event.issues && event.issues.map(issue => {
+          return (
+            <>
+            <div key={issue._id} className='card'>
+            <Link className='links' to={`/issues/${issue._id}`}>
+              <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
+              <div className="container">
+                  <h4>{issue.name}</h4>             
+              </div> 
+            </Link>            
+          </div>
+          </>                             
+          )
+        })}
+        </div>
+          </>                             
           )
         })}
         </div>
       </div>
-      <div className="item item-4 gridMarvel"></div>
-      
+      <div className="item item-4 gridMarvel"></div>      
     </div>
     
     )}
