@@ -53,7 +53,7 @@ export default function ProjectDetails() {
         return ( 
             <div key={event._id} className='card'>
             <Link className='links' to={`/events/${event._id}`}>
-                <img src={event.image} alt="Issue" style= {{width:"100%"}} />
+                <img src={event.image} alt="Event img" style= {{width:"100%"}} />
                 <div className="container">
                     <h4><b>{event.name}</b></h4> 
                 </div>

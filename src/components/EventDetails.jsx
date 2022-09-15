@@ -10,6 +10,7 @@ export default function ProjectDetails() {
   const storedToken = localStorage.getItem('authToken');
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
+  const [collection, setCollection] = useState(null)
 
   useEffect(() => {
     const getData = async () => {
@@ -33,6 +34,17 @@ export default function ProjectDetails() {
       console.error(error);
     }
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`http://localhost:8000/api/v1/collections/${id}`, collection, { headers: { Authorization: `Bearer ${storedToken}` } });
+      toast.success('Collection added successfully')
+      navigate(`/profile`)      
+    } catch (error) {
+      console.error(error);
+    }
+  }
  
 
   return (
@@ -43,6 +55,9 @@ export default function ProjectDetails() {
         <div className= {event.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
         <div className= {event.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
         <div className="item item-3">
+          <form className='form' onSubmit={handleSubmit}>
+            <button className= {event.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } type="submit">Add Event to my collection</button>
+          </form>
           <div className="infoCard">          
             <h3>Event: {event.name}</h3>
             <p><strong>Year published:</strong> {event.years}</p>

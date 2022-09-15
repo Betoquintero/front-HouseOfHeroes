@@ -10,8 +10,6 @@ export default function ProjectDetails() {
   const navigate = useNavigate();
   const [issue, setIssue] = useState(null);
   const [comment, setComment] = useState(null)
-
-
   const [newComment, setNewComment] = useState({
     comment: '',
   })
