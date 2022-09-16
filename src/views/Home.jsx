@@ -29,16 +29,19 @@ export default function Home() {
         </div>
         <button className='genericButton genButtonRest' onClick={() => navigate(`/Signup`)}>Signup</button>
         <div className='logoCardContainer'>
-        <div className="logoCard">
+        
          <Link to={`/parts/DC`}>
-           <img src= {dcLogo} style= {{width:"80px"}} alt = "DC logo"/>          
-         </Link>
-        </div>
-        <div className="logoCard " >
+          <div className="logoCard ">
+            <img src= {dcLogo} style= {{width:"80px"}} alt = "DC logo"/>
+          </div>         
+         </Link>        
+        
           <Link to={`/parts/MARVEL`}>
-            <img className="marvelLogo" src= {marvelLogo} style= {{width:"100px"}} alt = "Marvel logo" />          
+            <div className="logoCard " >
+              <img className="marvelLogo" src= {marvelLogo} style= {{width:"100px"}} alt = "Marvel logo" /> 
+            </div>         
           </Link>
-        </div>
+        
         </div>
       </div>
       <div className="item item-4 gridMarvel"></div>    

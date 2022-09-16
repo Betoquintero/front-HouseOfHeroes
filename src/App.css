@@ -1,7 +1,3 @@
-.selected {
-  color: red;
-}
-
 p{
   text-decoration: none;
 }
@@ -37,7 +33,7 @@ h4{
 
 /* NavBar */
 
-.navBar {
+/* .navBar {
   display: block;
   position: sticky;
   top: 0;
@@ -45,6 +41,17 @@ h4{
   height: 80px;
   padding: 5px 0;
   background-color: white;
+} */
+
+
+
+.navBar {
+  display: block;
+  top: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  
 }
 
 .navBar ul {
@@ -53,13 +60,31 @@ h4{
   padding-inline-start: 0;
 }
 
-.navBar ul li {
-  list-style-type: none;
-  font-weight: bolder;
+.navBar li {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  list-style: none;
 }
 
-.navBar ul li a:hover {
-  background-color: rgb(218, 214, 214);
+.navBar li:hover {
+  background-color: var(--marvel-red);
+  color: white;
+}
+
+.selected {
+  background-color: var(--marvel-red);
+  color: white;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.navLinks{
+  text-decoration: none;
+  color: var(--light-grey);
 }
 
 
@@ -69,6 +94,7 @@ h4{
 display: flex;
 flex-wrap: wrap;
 justify-content: space-around;
+width: 100%;
 }
 
 .card {
@@ -112,6 +138,7 @@ justify-content: space-around;
   background-color: var(--light-grey);
   border-radius: 20px;
   width: 250px;
+  height: 125px;
   padding: 20px;
 }
 
@@ -152,6 +179,49 @@ justify-content: space-around;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
 }
 
+.logoCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.eventIssue{
+  display: flex;
+  flex-wrap: wrap;
+  border: solid rgb(209, 206, 206);
+  margin: 30px;
+}
+
+.eventProfileContainer{  
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.profileCardsContainer{
+  display: flex;
+  flex-wrap: wrap;
+  width: 950px;
+  min-height: fit-content;
+  border-left: solid rgb(209, 206, 206);
+}
+
+.eventProfileTitle{
+ margin-left: 230px;
+ margin-bottom: 0px;
+ margin-top: 5px;
+ font-size: x-large;
+}
+
+.collectionProfileTitle{
+  margin-left: 350px;
+  margin-top: 5px;
+  font-size: x-large
+}
+
+.collectionHeaders{
+  display: flex;
+  margin-top: 30px;
+}
+
+
 /* Form */
 .form {
   width: 90%;
@@ -167,7 +237,7 @@ justify-content: space-around;
   height: 40px;
   margin: 5px 0 10px 0;
   padding: 10px;
-  /* margin-top: 15px; */
+  
 }
 
 /* Grid */
@@ -179,7 +249,7 @@ justify-content: space-around;
 }
 
 .item {
-  border: 1px solid black;
+  
   width: 100%;
   height: 100%;
 }
@@ -298,10 +368,26 @@ justify-content: space-around;
     width: 30%;
   }
 
+  .genericButton:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
   .genButtonRest{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
+  }
+
+  .genButtonRest:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+  .navButton{
+    border-radius: 20px;
+    padding: 5px;
+    background-color: #333;
+    color: white;
   }
 
   /* Comments */
