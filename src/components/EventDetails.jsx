@@ -10,7 +10,7 @@ export default function ProjectDetails() {
   const storedToken = localStorage.getItem('authToken');
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
-  const [collection, setCollection] = useState(null)
+  const [collection] = useState(null)
 
   useEffect(() => {
     const getData = async () => {
