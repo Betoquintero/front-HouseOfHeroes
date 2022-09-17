@@ -22,7 +22,7 @@ export default function Issues() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/v1/issues')
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/issues`)
         //console.log(response.data.data)
         setIssues(response.data.data);
       } catch (error) {
@@ -39,7 +39,7 @@ export default function Issues() {
       <div className="item item-2 gridDc"></div>  
       <div className="item item-3">
       
-      <h3>All Issues:</h3>
+      <h2>All Issues:</h2>
       <SearchBar onSearch= {handleSearch} />
       {!issues && <p>Loading</p>}
       <div  className="cardsContainer">

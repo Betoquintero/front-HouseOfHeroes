@@ -48,8 +48,7 @@ export default function ProjectDetails() {
  
 
   return (
-    <>
-      
+    <>      
       {event && (        
         <div className="grid-container">
         <div className= {event.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
@@ -62,6 +61,8 @@ export default function ProjectDetails() {
             <h3>Event: {event.name}</h3>
             <p><strong>Year published:</strong> {event.years}</p>
             <p><strong>Description:</strong> {event.description}</p>
+            <p><strong>Previous Event: </strong>{event.previousEvent}</p>
+            <p><strong>Next Event: </strong>{event.nextEvent}</p>
           </div>
           <div className='titleOfDetailImage'><strong>Event Image</strong></div>
           <div className='detailImage'><img src={event.image} style= {{width:"200px"}} alt='item img' /> </div>

@@ -19,6 +19,7 @@ import PartDetails from './components/PartDetails';
 import CreatePart from './views/CreatePart';
 import EditPart from './views/EditPart';
 import ProfileView from './views/ProfileView';
+import EditProfile from './views/EditProfile';
 import IsPrivate from './components/IsPrivate';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/parts/create" element={<CreatePart />} />
         <Route path="/parts/edit/:universe/:id" element={<EditPart />} />
         <Route path="/profile" element={<IsPrivate><ProfileView/></IsPrivate>}/>
+        <Route path="/profile/edit" element={<IsPrivate><EditProfile/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>

@@ -12,7 +12,7 @@ export default function Issues() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/parts/${universe}`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/parts/${universe}`)
         //console.log(response)
         setParts(response.data.data);
       } catch (error) {

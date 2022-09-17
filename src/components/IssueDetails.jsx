@@ -103,7 +103,7 @@ export default function ProjectDetails() {
         return (
         <div key={elem._id}>
         <div className="comment-block">
-            <img className="profile-img" width="20px" height="20px" src={elem.userId.imageUrl} alt='profile img'/>
+            <img className="profile-img" width="40px" height="40px" src={elem.userId.imageUrl} alt='profile img'/>
             <p className="commenting-user"><strong>{elem.userId.username}</strong></p> said:     
             <p>{elem.comment}</p>
         </div>

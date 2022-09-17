@@ -32,7 +32,7 @@ export default function EditProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const editedPart = await axios.put(`http://localhost:8000/api/v1/parts/${id}`, part);
+      const editedPart = await axios.put(`${process.env.REACT_APP_API_URL}/parts/${id}`, part);
       navigate(`/parts/${editedPart.data.data.universe}/${editedPart.data.data._id}`)
     } catch (error) {
       console.error(error);

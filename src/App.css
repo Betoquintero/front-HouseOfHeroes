@@ -24,6 +24,10 @@ h2{
   margin-left: 20px;
 }
 
+h3{
+  font-size: xx-large;  
+}
+
 
 h4{
   text-decoration:none;
@@ -31,19 +35,11 @@ h4{
   text-align: center;
 }
 
-/* NavBar */
-
-/* .navBar {
-  display: block;
-  position: sticky;
-  top: 0;
-  width: 100vw;
-  height: 80px;
-  padding: 5px 0;
-  background-color: white;
-} */
-
-
+h5{
+  font-size: xx-large;
+  margin-left: 100px;
+  margin-top: 30px;
+}
 
 .navBar {
   display: block;
@@ -160,7 +156,7 @@ width: 100%;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px;
+  padding: 15px;
   line-height: 1.7; 
 }
 
@@ -232,10 +228,10 @@ width: 100%;
 
 .formBox {
   border-radius: 10px;
-  width: 100%;
+  width: 80%;
   border-width: 1px;
   height: 40px;
-  margin: 5px 0 10px 0;
+  margin: 5px 0 10px 30px;
   padding: 10px;
   
 }
@@ -434,5 +430,45 @@ width: 100%;
     text-decoration: none;
     color: black;
   }
+
+  .noCollections{
+    margin-top: 300px;    
+  }
+
+  .profileUserImg{
+    border-radius: 50%;
+    margin-top: 100px;
+    margin-left: 100px;
+  }
+
+  .profileDescription{
+    margin-top: 40px;
+    margin-left: 100px;
+  }
+
+  /* Error page */
+
+  .errorImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .errorMessage{
+    font-size: 4rem;
+    color: var(--marvel-red); 
+    font-weight: bolder;
+    text-align: center;   
+  }
+
+  .subErrorMessage{
+    font-size: 4rem;
+    color:var(--dc-blue);
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
 
 

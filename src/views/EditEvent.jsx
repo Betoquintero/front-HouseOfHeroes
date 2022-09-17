@@ -11,7 +11,7 @@ export default function EditProject() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const event = await axios.get(`http://localhost:8000/api/v1/events/${id}`);
+        const event = await axios.get(`${process.env.REACT_APP_API_URL}/events/${id}`);
         setEvent(event.data.data);
       } catch (error) {
         console.error(error);
@@ -32,7 +32,7 @@ export default function EditProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const editedEvent = await axios.put(`http://localhost:8000/api/v1/events/${id}`, event);
+      const editedEvent = await axios.put(`${process.env.REACT_APP_API_URL}/events/${id}`, event);
       navigate(`/events/${editedEvent.data.data._id}`)
     } catch (error) {
       console.error(error);

@@ -25,7 +25,7 @@ export default function CreateProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newPart = await axios.post('http://localhost:8000/api/v1/parts', part, { headers: { Authorization: `Bearer ${storedToken}` } });
+      const newPart = await axios.post(`${process.env.REACT_APP_API_URL}/parts`, part, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Part created successfully')
       navigate(`/parts/${newPart.data.data.universe}/${newPart.data.data._id}`)
     } catch (error) {

@@ -40,9 +40,12 @@ export default function Home() {
             <div className="logoCard " >
               <img className="marvelLogo" src= {marvelLogo} style= {{width:"100px"}} alt = "Marvel logo" /> 
             </div>         
-          </Link>
-        
+          </Link>        
         </div>
+        <div className="homeCard">
+          <p>If you wish...take a look at all the comics and find loose your self in this infinnite world!</p>
+        </div>
+        <button className='genericButton genButtonRest' onClick={() => navigate(`/issues`)}>Check all issues</button>
       </div>
       <div className="item item-4 gridMarvel"></div>    
     </div>

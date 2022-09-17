@@ -27,7 +27,7 @@ export default function CreateProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newIssue = await axios.post('http://localhost:8000/api/v1/issues', issue, { headers: { Authorization: `Bearer ${storedToken}` } });
+      const newIssue = await axios.post(`${process.env.REACT_APP_API_URL}/issues`, issue, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Issue created successfully')
       navigate(`/issues/${newIssue.data.data._id}`)
     } catch (error) {
