@@ -61,6 +61,7 @@ h5{
   color: white;
   text-align: center;
   padding: 14px 16px;
+  margin-top: 5px;
   text-decoration: none;
   font-size: 17px;
   list-style: none;
@@ -75,7 +76,8 @@ h5{
   background-color: var(--marvel-red);
   color: white;
   border-radius: 20px;
-  padding: 5px;
+  padding: 7px;
+  
 }
 
 .navLinks{
@@ -220,7 +222,7 @@ width: 100%;
 
 /* Form */
 .form {
-  width: 90%;
+  width: 80%;
   margin-left: 20px;
   margin-top: 20px;
 
@@ -228,7 +230,7 @@ width: 100%;
 
 .formBox {
   border-radius: 10px;
-  width: 80%;
+  width: 100%;
   border-width: 1px;
   height: 40px;
   margin: 5px 0 10px 30px;
