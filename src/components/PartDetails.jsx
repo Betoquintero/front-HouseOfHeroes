@@ -14,7 +14,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/parts/${universe}/${id}`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/parts/${universe}/${id}`)
         //console.log(response);
         setPart(response.data.data)
       } catch (error) {
@@ -26,7 +26,7 @@ export default function ProjectDetails() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/parts/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      await axios.delete(`${process.env.REACT_APP_API_URL}/parts/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Project deleted successfully')
       navigate('/');
     } catch (error) {

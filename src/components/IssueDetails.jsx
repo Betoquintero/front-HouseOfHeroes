@@ -26,9 +26,9 @@ export default function ProjectDetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:8000/api/v1/comments/${id}`, newComment, { headers: { Authorization: `Bearer ${storedToken}` } });
+      await axios.post(`${process.env.REACT_APP_API_URL}/comments/${id}`, newComment, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Comment created successfully')
-      const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`)      
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/comments/${id}`)      
       setComment(response.data.data)
       
     } catch (error) {
@@ -39,7 +39,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/issues/${id}`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/issues/${id}`)
         //console.log(response);
         setIssue(response.data.data)
       } catch (error) {
@@ -52,7 +52,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     const getComment = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/comments/${id}`)
         //console.log(response);
         setComment(response.data.data)
       } catch (error) {
@@ -66,7 +66,7 @@ export default function ProjectDetails() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/issues/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      await axios.delete(`${process.env.REACT_APP_API_URL}/issues/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Issue deleted successfully')
       navigate('/');
     } catch (error) {

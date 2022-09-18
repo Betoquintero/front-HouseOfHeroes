@@ -15,7 +15,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/events/${id}`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/events/${id}`)
         //console.log(response);
         setEvent(response.data.data)
       } catch (error) {
@@ -27,7 +27,7 @@ export default function ProjectDetails() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/events/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      await axios.delete(`${process.env.REACT_APP_API_URL}/events/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Project deleted successfully')
       navigate('/');
     } catch (error) {
@@ -38,7 +38,7 @@ export default function ProjectDetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:8000/api/v1/collections/${id}`, collection, { headers: { Authorization: `Bearer ${storedToken}` } });
+      await axios.post(`${process.env.REACT_APP_API_URL}/collections/${id}`, collection, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Collection added successfully')
       navigate(`/profile`)      
     } catch (error) {
