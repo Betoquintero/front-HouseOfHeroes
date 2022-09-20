@@ -196,7 +196,7 @@ width: 100%;
 .issuesProfileTitle{
   margin-left: 230px;
   margin-bottom: 0px;
-  margin-top: 5px;
+  margin-top: 20px;
   font-size: x-large;
 }
 
@@ -212,8 +212,7 @@ width: 100%;
   display: flex;
   flex-wrap: wrap;
   width: 950px;
-  min-height: fit-content;
-  border: solid rgb(209, 206, 206);
+  min-height: fit-content;  
   margin-left: 165px;
   margin-top: 40px;
 
@@ -404,6 +403,33 @@ width: 100%;
     padding: 5px;
     background-color: #333;
     color: white;
+  }
+
+  .deleteCollectionContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .deleteEventCollection{
+    background-color: #8194a0;
+    color: white;
+    font-family: Roboto Condensed;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-width: 0px;
+    width: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .deleteEventCollection:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
   }
 
   /* Comments */

@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link }from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export default function ProfileView() {
   const { id } = useParams();
   const storedToken = localStorage.getItem('authToken');
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [collection, setCollection] = useState({
     userId: '',
@@ -25,8 +27,7 @@ export default function ProfileView() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections`,  { headers: { Authorization: `Bearer ${storedToken}` } } );
-        //console.log(response);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
         setCollection(response.data.data)
       } catch (error) {
         console.error(error);
@@ -38,17 +39,35 @@ export default function ProfileView() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );
-        //console.log(response);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
         setissueCollection(response.data.data)
       } catch (error) {
         console.error(error);
       }
     }
     getData();
-  }, [id, storedToken]); 
+  }, [id, storedToken]);
 
-  console.log(issueCollection)
+
+  const handleDeleteEvent = async (id) => {   
+    try {
+      await axios.get(`${process.env.REACT_APP_API_URL}/collections/delete-event/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
+      toast.success('Event collection deleted successfully')
+      navigate('/');   
+    } catch (error) {
+      console.error(error);
+    }
+  } 
+  
+  const handleDeleteIssue = async (id) => {   
+    try {
+      await axios.get(`${process.env.REACT_APP_API_URL}/collections/delete-issue/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
+      toast.success('Issue deleted successfully')
+      navigate('/');   
+    } catch (error) {
+      console.error(error);
+    }
+  }  
   
   return (
     <>    
@@ -78,6 +97,7 @@ export default function ProfileView() {
               </div> 
             </Link>            
           </div>
+            <div className='deleteCollectionContainer'><button className= 'deleteEventCollection' onClick={() => handleDeleteEvent(event._id)}>Delete event</button></div>
           </div>
           <div  className="profileCardsContainer">          
             {event.issues && event.issues.map(issue => {
@@ -118,6 +138,7 @@ export default function ProfileView() {
               </div> 
             </Link>            
           </div>
+          <div className='deleteCollectionContainer'><button className= 'deleteEventCollection' onClick={() => handleDeleteIssue(issue._id)}>Delete Issue</button></div>
           </div>                             
           )
         }))}        
