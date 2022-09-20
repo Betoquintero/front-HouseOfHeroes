@@ -15,6 +15,12 @@ export default function ProfileView() {
     events:[]
   })
 
+  const [issueCollection, setissueCollection] = useState({
+    userId: '',
+    issues: [],
+    events:[]
+  })
+
 
   useEffect(() => {
     const getData = async () => {
@@ -28,6 +34,21 @@ export default function ProfileView() {
     }
     getData();
   }, [id, storedToken]);  
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );
+        //console.log(response);
+        setissueCollection(response.data.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getData();
+  }, [id, storedToken]); 
+
+  console.log(issueCollection)
   
   return (
     <>    
@@ -75,12 +96,34 @@ export default function ProfileView() {
         })}
         </div>
         </div>        
-          </div>                             
+        </div>                             
           )
         })
         )}
+        
         {!collection && <p className= 'noCollections'><strong>No collections to show, pick one and start collecting!</strong></p>}
         </div>
+      <div className='collectionHeaders'>
+        <p className='issuesProfileTitle'><strong>Individual issues that I'd like to read</strong></p>        
+      </div> 
+        <div className="profileIssuesContainer">          
+            {issueCollection && (issueCollection.issues.map(issue => {
+          return (
+            <div key={issue._id}>
+            <div  className='card'>
+            <Link className='links' to={`/issues/${issue._id}`}>
+              <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
+              <div className="container">
+                  <h4>{issue.name}</h4>             
+              </div> 
+            </Link>            
+          </div>
+          </div>                             
+          )
+        }))}        
+        </div>
+        {!issueCollection && <p className= 'noIssue'><strong>No issues to show, pick one and start collecting!</strong></p>}
+
       </div>
       <div className="item item-4 gridMarvel"></div>      
     </div>

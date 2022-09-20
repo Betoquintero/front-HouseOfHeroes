@@ -193,12 +193,30 @@ width: 100%;
   margin-bottom: auto;
 }
 
+.issuesProfileTitle{
+  margin-left: 230px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+  font-size: x-large;
+}
+
 .profileCardsContainer{
   display: flex;
   flex-wrap: wrap;
   width: 950px;
   min-height: fit-content;
   border-left: solid rgb(209, 206, 206);
+}
+
+.profileIssuesContainer{
+  display: flex;
+  flex-wrap: wrap;
+  width: 950px;
+  min-height: fit-content;
+  border: solid rgb(209, 206, 206);
+  margin-left: 165px;
+  margin-top: 40px;
+
 }
 
 .eventProfileTitle{
@@ -435,6 +453,11 @@ width: 100%;
 
   .noCollections{
     margin-top: 300px;    
+  }
+
+  .noIssue{
+    margin-top: 300px;
+    text-align: center;   
   }
 
   .profileUserImg{

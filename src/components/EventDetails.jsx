@@ -28,7 +28,7 @@ export default function ProjectDetails() {
   const handleDelete = async () => {
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/events/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
-      toast.success('Project deleted successfully')
+      toast.success('Issue deleted successfully')
       navigate('/');
     } catch (error) {
       console.error(error);
