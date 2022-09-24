@@ -520,6 +520,14 @@ width: 100%;
     margin-top: 20px;
   }
 
+  .issueRead{
+    background-color: green;
+  }
+
+  .issueUnread{
+    background-color: red;
+  }
+
 
 
 

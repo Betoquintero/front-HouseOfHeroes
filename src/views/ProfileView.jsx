@@ -10,6 +10,7 @@ export default function ProfileView() {
   const storedToken = localStorage.getItem('authToken');
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [read,setRead] = useState(null)
 
   const [collection, setCollection] = useState({
     userId: '',
@@ -23,6 +24,15 @@ export default function ProfileView() {
     events:[]
   })
 
+  const getIssues = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
+      setissueCollection(response.data.data)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
 
   useEffect(() => {
     const getData = async () => {
@@ -37,10 +47,22 @@ export default function ProfileView() {
   }, [id, storedToken]);  
 
   useEffect(() => {
+    // const getData = async () => {
+    //   try {
+    //     const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
+    //     setissueCollection(response.data.data)
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // }
+    getIssues();
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
-        setissueCollection(response.data.data)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/readIssue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
+        setRead(response.data.data)
       } catch (error) {
         console.error(error);
       }
@@ -57,17 +79,31 @@ export default function ProfileView() {
     } catch (error) {
       console.error(error);
     }
-  } 
+  }   
   
   const handleDeleteIssue = async (id) => {   
     try {
-      await axios.get(`${process.env.REACT_APP_API_URL}/collections/delete-issue/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/collections/delete-issue/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
       toast.success('Issue deleted successfully')
-      navigate('/');   
+      if(res){
+        getIssues()
+      }  
     } catch (error) {
       console.error(error);
     }
   }  
+
+  const handleToggle = async (id) => {   
+    try {
+      await axios.get(`${process.env.REACT_APP_API_URL}/collections/read/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
+      toast.success('Issue status changed successfully')
+      navigate('/');   
+    } catch (error) {
+      console.error(error);
+    }
+  } 
+
+console.log (read)
   
   return (
     <>    
@@ -138,6 +174,7 @@ export default function ProfileView() {
               </div> 
             </Link>            
           </div>
+          <div className='deleteCollectionContainer'><button className= {issue.read === true ? 'issueRead' : 'issueUnread' } onClick={() => handleToggle(issue._id)}>Read</button></div>
           <div className='deleteCollectionContainer'><button className= 'deleteEventCollection' onClick={() => handleDeleteIssue(issue._id)}>Delete Issue</button></div>
           </div>                             
           )
