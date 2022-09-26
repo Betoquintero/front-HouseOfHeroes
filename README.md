@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is called XXX. It is used for ...
+This is an application developed by Alberto Quintero as the final project for the 3rd module of Ironhack Barcelona. The app is a great place for new and experience people in the comics world. 
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](picture.png)
@@ -30,10 +30,16 @@ npm run start
 - User can sign up and create a new account
 - User can login
 - User can log out
+- User can Edit his profile
+- User can edit collections
+- User can create, edit or delete issues, events and parts
 
 ### Backlog
 
-- User can ...
+- User can change his/her profile picture
+- User can Store collections in his/her profile
+
+
 
 ---
 

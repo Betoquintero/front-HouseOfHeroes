@@ -24,16 +24,7 @@ export default function ProfileView() {
     events:[]
   })
 
-  const getIssues = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
-      setissueCollection(response.data.data)
-    } catch (error) {
-      console.error(error);
-    }
-  }
   
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -47,16 +38,16 @@ export default function ProfileView() {
   }, [id, storedToken]);  
 
   useEffect(() => {
-    // const getData = async () => {
-    //   try {
-    //     const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
-    //     setissueCollection(response.data.data)
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // }
-    getIssues();
-  }, []);
+    const getData = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/collections/issue`,  { headers: { Authorization: `Bearer ${storedToken}` } } );        
+        setissueCollection(response.data.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getData();
+  }, [id, storedToken]);
 
   useEffect(() => {
     const getData = async () => {
@@ -83,11 +74,9 @@ export default function ProfileView() {
   
   const handleDeleteIssue = async (id) => {   
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/collections/delete-issue/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
+      await axios.get(`${process.env.REACT_APP_API_URL}/collections/delete-issue/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });      
       toast.success('Issue deleted successfully')
-      if(res){
-        getIssues()
-      }  
+      navigate('/profile');   
     } catch (error) {
       console.error(error);
     }
@@ -112,7 +101,8 @@ console.log (read)
       <div className="item item-2 gridDc"></div>  
       <div className="item item-3">
       <img className='profileUserImg'  style= {{width:"100px"}} src={user.imageUrl} alt='user profile pic' />
-      <h5>Welcome to your profile page {user.username}!</h5> 
+      <h5>Welcome to your profile page {user.username}!</h5>
+      <Link className='links' to={`/user/edit`}><button className= 'editProfile'>Edit your profile</button></Link>       
       <p className='profileDescription'><strong>Below you will find your saved collections, if you don't have any, visit the events and collections pages to find the ones you like the most!</strong></p>     
       <div className='collectionHeaders'>
         <p className='eventProfileTitle'><strong>Event</strong></p>

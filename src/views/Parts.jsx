@@ -28,23 +28,28 @@ export default function Issues() {
         <div className= {universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
         <div className= {universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
         <div className="item item-3">        
-        <div>        
-        {!parts && <p>Loading</p>}
-        <div className='cardsContainer'>
-        {parts && parts.map(part => {
-            return (
-                <div className='partCard' key={part._id}>
-                <Link className='links' to={`/parts/${part.universe}/${part._id}`}>
-                    <p><strong>{part.name}</strong></p>
-                    <p>{part.description}</p>
-                </Link>
-                </div>
-            )
-        })}
-        </div>        
-        <button className='genericButton genButtonRest' onClick={() => navigate(`/parts/create`)}>Create Part</button>
-        <Outlet />
-        </div>
+          <div>        
+            {!parts && <p>Loading</p>}
+            <div className='partsHeader'><strong>Welcome to the {universe} section!</strong></div>
+            <div className='partsSubHeader'>Below you will find all of the {universe} parts. Read them carefully and enter to the most interesting!</div>
+            <div className='cardsContainer'>
+            {parts && parts.map(part => {
+                return (
+                  <>                
+                    <div className='partCard' key={part._id}>
+                    <Link className='links' to={`/parts/${part.universe}/${part._id}`}>
+                        <p><strong>{part.name}</strong></p>
+                        <p><strong>Years published: </strong>{part.years}</p>
+                        <p>{part.description}</p>
+                    </Link>
+                    </div>
+                  </>
+                )
+            })}
+            </div>        
+            <button className='genericButton genButtonRest' onClick={() => navigate(`/parts/create`)}>Create Part</button>
+            <Outlet />
+          </div>
         </div>
         <div className= {universe ==='DC' ? 'item-4 gridDc' : 'item-4 gridMarvel' }></div> 
     </div>

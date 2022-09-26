@@ -44,7 +44,7 @@ function App() {
         <Route path="/parts/create" element={<CreatePart />} />
         <Route path="/parts/edit/:universe/:id" element={<EditPart />} />
         <Route path="/profile" element={<IsPrivate><ProfileView/></IsPrivate>}/>
-        <Route path="/profile/edit" element={<IsPrivate><EditProfile/></IsPrivate>}/>
+        <Route path="/user/edit" element={<IsPrivate><EditProfile/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
