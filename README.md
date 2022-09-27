@@ -5,7 +5,7 @@
 This is an application developed by Alberto Quintero as the final project for the 3rd module of Ironhack Barcelona. The app is a great place for new and experience people in the comics world. 
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
-![](picture.png)
+![](public/5.png)
 
 ---
 ## Instructions
@@ -45,9 +45,9 @@ npm run start
 
 ## Useful links
 
-- [Presentation slides]()
-- [Backend repository]()
-- [Backend deploy]()
-- [Deployed app]()
+- [Presentation slides](https://slides.com/albertoquintero-1/deck)
+- [Backend repository](https://github.com/Betoquintero/back-HouseOfHeroes.git)
+- [Backend deploy](https://house-of-heroes.herokuapp.com/)
+- [Deployed app](https://house-of-heroes.netlify.app/)
 
 
