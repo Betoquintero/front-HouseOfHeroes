@@ -4,7 +4,7 @@
 
 This is an application developed by Alberto Quintero as the final project for the 3rd module of Ironhack Barcelona. The app is a great place for new and experience people in the comics world. 
 
-> Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
+
 ![](public/5.png)
 
 ---
