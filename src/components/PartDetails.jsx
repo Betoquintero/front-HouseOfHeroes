@@ -15,7 +15,6 @@ export default function ProjectDetails() {
     const getData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/parts/${universe}/${id}`)
-        //console.log(response);
         setPart(response.data.data)
       } catch (error) {
         console.error(error);
