@@ -177,7 +177,6 @@ export default function ProfileView() {
           )
         })}        
       </div>
-      {!issueCollection && <p className= 'noIssue'><strong>No issues to show, pick one and start collecting!</strong></p>}
       </div>
       <div className="item item-4 gridMarvel"></div> 
       </div>
