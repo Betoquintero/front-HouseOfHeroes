@@ -23,7 +23,6 @@ export default function Issues() {
     const getData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/issues`)
-        //console.log(response.data.data)
         setIssues(response.data.data);
       } catch (error) {
         console.error(error)

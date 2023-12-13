@@ -69,7 +69,30 @@ export default function ProfileView() {
     } catch (error) {
       console.error(error);
     }
-  }  
+  }
+
+  const toggleReadStatus = async (issueId) => {
+    try {
+      const response = await axios.patch(`${process.env.REACT_APP_API_URL}/readStatuses/toggle-read/${issueId}`, {}, { 
+        headers: { Authorization: `Bearer ${storedToken}` }
+      });
+      setCollection(prevCollection => {
+        const updatedEvents = prevCollection.events.map(event => {
+          const updatedIssues = event.issues.map(issue => 
+            issue._id === issueId ? { ...issue, readStatus: response.data.isRead } : issue
+          );
+          return { ...event, issues: updatedIssues };
+        });
+  
+        return { ...prevCollection, events: updatedEvents };
+      });
+      toast.success('Issue read status updated');
+    } catch (error) {
+      console.error('Error toggling read status:', error);
+      toast.error('Failed to update issue read status');
+    }
+  };
+  
   
   
   return (
@@ -86,73 +109,80 @@ export default function ProfileView() {
         <p className='eventProfileTitle'><strong>Event</strong></p>
         <p className='collectionProfileTitle'><strong>Collection of issues</strong></p> 
       </div>       
-        <div  className="cardsContainer">
-            {collection && (
-            collection.events.map(event => {
+      <div className="cardsContainer">
+        {collection && collection.events.map(event => {
           return (
-            <div key={event._id} >
-            <div className='eventIssue'>
-            <div className='eventProfileContainer'>            
-            <div  className='card'>
-            <Link className='links' to={`/events/${event._id}`}>
-              <img src={event.image} alt="Issue" style= {{width:"100%"}} />
-              <div className="container">
-                  <h4>{event.name}</h4>             
-              </div> 
-            </Link>            
-          </div>
-            <div className='deleteCollectionContainer'><button className= 'deleteEventCollection' onClick={() => handleDeleteEvent(event._id)}>Delete event</button></div>
-          </div>
-          <div  className="profileCardsContainer">          
-            {event.issues && event.issues.map(issue => {
-          return (
-            <div key={issue._id}>
-            <div  className='card'>
-            <Link className='links' to={`/issues/${issue._id}`}>
-              <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
-              <div className="container">
-                  <h4>{issue.name}</h4>             
-              </div> 
-            </Link>            
-          </div>
-          </div>                             
+            <div key={event._id} className='eventIssue'>
+              <div className='eventProfileContainer'>            
+                <div className='card'>
+                  <Link className='links' to={`/events/${event._id}`}>
+                    <img src={event.image} alt="Issue" style= {{width:"100%"}} />
+                    <div className="container">
+                        <h4>{event.name}</h4>             
+                    </div> 
+                  </Link>            
+                </div>
+                <div className='deleteCollectionContainer'>
+                  <button className= 'deleteEventCollection' onClick={() => handleDeleteEvent(event._id)}>Delete event</button>
+                </div>
+              </div>
+              <div className="profileCardsContainer">          
+                {event.issues && event.issues.map(issue => {
+                  return (
+                    <div key={issue._id} style={{ opacity: issue.readStatus ? 0.5 : 1 }}>
+                      <div className='card'>
+                        <Link className='links' to={`/issues/${issue._id}`}>
+                          <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
+                          <div className="container">
+                              <h4>{issue.name}</h4>             
+                          </div> 
+                        </Link>            
+                      </div>
+                      <button onClick={() => toggleReadStatus(issue._id)}>
+                        {issue.readStatus ? 'Mark as Unread' : 'Mark as Read'}
+                      </button>
+                      <div className='deleteCollectionContainer'>
+                        <button className= 'deleteEventCollection' onClick={() => handleDeleteIssue(issue._id)}>Delete Issue</button>
+                      </div>
+                    </div>                             
+                  )
+                })}
+              </div>
+            </div>                             
           )
         })}
-        </div>
-        </div>        
-        </div>                             
-          )
-        })
-        )}
-        
-        {!collection && <p className= 'noCollections'><strong>No collections to show, pick one and start collecting!</strong></p>}
-        </div>
+      </div>
+      {!collection && <p className= 'noCollections'><strong>No collections to show, pick one and start collecting!</strong></p>}
+      </div>
       <div className='collectionHeaders'>
         <p className='issuesProfileTitle'><strong>Individual issues that I'd like to read</strong></p>        
       </div> 
-        <div className="profileIssuesContainer">          
-            {issueCollection && (issueCollection.issues.map(issue => {
+      <div className="profileIssuesContainer">          
+        {issueCollection && issueCollection.issues.map(issue => {
           return (
-            <div key={issue._id}>
-            <div  className='card'>
-            <Link className='links' to={`/issues/${issue._id}`}>
-              <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
-              <div className="container">
-                  <h4>{issue.name}</h4>             
-              </div> 
-            </Link>            
-          </div>          
-          <div className='deleteCollectionContainer'><button className= 'deleteEventCollection' onClick={() => handleDeleteIssue(issue._id)}>Delete Issue</button></div>
-          </div>                             
+            <div key={issue._id} style={{ opacity: issue.readStatus ? 0.5 : 1 }}>
+              <div className='card'>
+                <Link className='links' to={`/issues/${issue._id}`}>
+                  <img src={issue.image} alt="Issue" style= {{width:"100%"}} />
+                  <div className="container">
+                      <h4>{issue.name}</h4>             
+                  </div> 
+                </Link>            
+              </div>          
+              <button onClick={() => toggleReadStatus(issue._id)}>
+                {issue.readStatus ? 'Mark as Unread' : 'Mark as Read'}
+              </button>
+              <div className='deleteCollectionContainer'>
+                <button className= 'deleteEventCollection' onClick={() => handleDeleteIssue(issue._id)}>Delete Issue</button>
+              </div>
+            </div>                             
           )
-        }))}        
-        </div>
-        {!issueCollection && <p className= 'noIssue'><strong>No issues to show, pick one and start collecting!</strong></p>}
-
+        })}        
+      </div>
+      {!issueCollection && <p className= 'noIssue'><strong>No issues to show, pick one and start collecting!</strong></p>}
       </div>
       <div className="item item-4 gridMarvel"></div>      
-    </div>
     </>
   )
-}
+  }
 
