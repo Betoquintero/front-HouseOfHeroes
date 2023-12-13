@@ -96,7 +96,6 @@ export default function ProfileView() {
   
   
   return (
-    <>    
     <div className="grid-container">
       <div className="item item-1 backgroundImgHome"></div>
       <div className="item item-2 gridDc"></div>  
@@ -153,7 +152,6 @@ export default function ProfileView() {
         })}
       </div>
       {!collection && <p className= 'noCollections'><strong>No collections to show, pick one and start collecting!</strong></p>}
-      </div>
       <div className='collectionHeaders'>
         <p className='issuesProfileTitle'><strong>Individual issues that I'd like to read</strong></p>        
       </div> 
@@ -181,8 +179,8 @@ export default function ProfileView() {
       </div>
       {!issueCollection && <p className= 'noIssue'><strong>No issues to show, pick one and start collecting!</strong></p>}
       </div>
-      <div className="item item-4 gridMarvel"></div>      
-    </>
+      <div className="item item-4 gridMarvel"></div> 
+      </div>
   )
   }
 

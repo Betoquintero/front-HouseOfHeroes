@@ -10,7 +10,6 @@ export default function ProjectDetails() {
   const navigate = useNavigate();
   const [issue, setIssue] = useState(null);
   const [comment, setComment] = useState(null);
-  const [collection] = useState(null)
   const [newComment, setNewComment] = useState({
     comment: '',
   })
@@ -41,7 +40,6 @@ export default function ProjectDetails() {
     const getData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/issues/${id}`)
-        //console.log(response);
         setIssue(response.data.data)
       } catch (error) {
         console.error(error);
@@ -75,17 +73,6 @@ export default function ProjectDetails() {
     }
   }
 
-  const handleSubmitIssue = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/collections/issue/${id}`, collection, { headers: { Authorization: `Bearer ${storedToken}` } });
-      toast.success('Issue added successfully')
-      navigate(`/profile`)      
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   return (
     <div>      
       {issue && (        
@@ -93,9 +80,6 @@ export default function ProjectDetails() {
             <div className= {issue.universe ==='DC' ? 'item-1 backgroundImgDc' : 'item-1 backgroundImgMarvel' }> </div>
             <div className= {issue.universe ==='DC' ? 'item-2 gridDc' : 'item-2 gridMarvel' }></div>
             <div className="item item-3">
-              <form className='form' onSubmit={handleSubmitIssue}>
-                <button className= {issue.universe ==='DC' ? 'buttonDc' : 'buttonMarvel' } type="submit">Add Issue to my collection</button>
-              </form>
                 <div className='infoCard'>        
                     <h3>Issue: {issue.name}</h3>
                     <p><strong>Year published:</strong> {issue.years}    </p>
