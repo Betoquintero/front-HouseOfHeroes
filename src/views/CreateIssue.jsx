@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MixedGrid from '../components/MixedGrid'
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
@@ -36,10 +37,7 @@ export default function CreateProject() {
   }
 
   return (
-    <div className="grid-container">
-        <div className="item item-1 backgroundImgHome"></div>
-        <div className="item item-2 gridDc"></div>  
-        <div className="item item-3">
+      <MixedGrid>
         <h2>Create issue</h2>
             <form className='form' onSubmit={handleSubmit}>        
                 <input className='formBox' type="text" name="universe" placeholder="DC or MARVEL" value={issue.universe} onChange={handleChange} />
@@ -49,8 +47,7 @@ export default function CreateProject() {
                 <input className='formBox' type="text" name="summary" placeholder="Issue summary" value={issue.summary} onChange={handleChange} />        
                 <button className='genericButton genButtonRest' type="submit">Save</button>
             </form>
-        </div>
-        <div className="item item-4 gridMarvel"></div>
-    </div>
+      </MixedGrid>
+
   )
 }
