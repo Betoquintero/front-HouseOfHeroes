@@ -46,11 +46,6 @@ export default function ProfileEventCollection ({ collection, handleDeleteEvent,
                       <button onClick={() => toggleReadStatus(issue._id)}>
                         {issue.readStatus ? "Mark as Unread" : "Mark as Read"}
                       </button>
-                      <div className="deleteCollectionContainer">
-                        <button className="deleteEventCollection" onClick={() => handleDeleteIssue(issue._id)}>
-                          Delete Issue
-                        </button>
-                      </div>
                     </div>
                   ))}
               </div>

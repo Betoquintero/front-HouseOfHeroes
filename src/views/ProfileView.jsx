@@ -56,27 +56,37 @@ export default function ProfileView() {
     getData();
   }, [id, storedToken]);
 
-  const handleDeleteEvent = async (id) => {
+  const handleDeleteEvent = async (eventId) => {
     try {
-      await axios.get(
-        `${process.env.REACT_APP_API_URL}/collections/delete-event/${id}`,
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/collections/delete-event/${eventId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       );
       toast.success("Event collection deleted successfully");
-      navigate("/");
+      setCollection((prevCollection) => {
+        const updatedEvents = prevCollection.events.filter(
+          (event) => event._id !== eventId
+        );
+        return { ...prevCollection, events: updatedEvents };
+      });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleDeleteIssue = async (id) => {
+  const handleDeleteIssue = async (issueId) => {
     try {
       await axios.get(
-        `${process.env.REACT_APP_API_URL}/collections/delete-issue/${id}`,
+        `${process.env.REACT_APP_API_URL}/collections/delete-issue/${issueId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       );
       toast.success("Issue deleted successfully");
-      navigate("/profile");
+      setIssueCollection((prevCollection) => {
+        const updatedIssues = prevCollection.issues.filter(
+          (issue) => issue._id !== issueId
+        );
+        return { ...prevCollection, issues: updatedIssues };
+      });
     } catch (error) {
       console.error(error);
     }
@@ -132,7 +142,6 @@ export default function ProfileView() {
       <ProfileEventCollection
         collection={collection}
         handleDeleteEvent={handleDeleteEvent}
-        handleDeleteIssue={handleDeleteIssue}
         toggleReadStatus={toggleReadStatus}
       />
       {!collection && (
@@ -143,7 +152,7 @@ export default function ProfileView() {
         </p>
       )}
       <ProfileIssueCollection
-        issueCollection={issueCollection}
+        issueCollection={collection}
         handleDeleteIssue={handleDeleteIssue}
         toggleReadStatus={toggleReadStatus}
       />

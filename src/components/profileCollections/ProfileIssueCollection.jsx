@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function ProfileIssueCollection ({ issueCollection, handleDeleteIssue, toggleReadStatus }) {
+
   return (
     <div>
       <div className="collectionHeaders">

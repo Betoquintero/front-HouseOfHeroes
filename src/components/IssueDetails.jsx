@@ -10,6 +10,7 @@ export default function ProjectDetails() {
   const navigate = useNavigate();
   const [issue, setIssue] = useState(null);
   const [comment, setComment] = useState(null);
+  const [collection]= useState(null)
   const [newComment, setNewComment] = useState({
     comment: "",
   });
@@ -81,10 +82,33 @@ export default function ProjectDetails() {
     }
   };
 
+  const handleAddIssueToCollection = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/collections/create-issue-collection/${id}`,
+        collection,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      );
+      toast.success("Collection issue added successfully");
+      navigate(`/profile`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       {issue && (
         <CustomGrid universe={issue.universe}>
+          <form className="form" onSubmit={handleAddIssueToCollection}>
+            <button
+              className={issue.universe === "DC" ? "buttonDc" : "buttonMarvel"}
+              type="submit"
+            >
+              Add Issue to my collection
+            </button>
+          </form>
           <div className="infoCard">
             <h3>Issue: {issue.name}</h3>
             <p>

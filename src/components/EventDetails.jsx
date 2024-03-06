@@ -6,7 +6,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function ProjectDetails() {
-  // const params = useParams(); then use with params.id
   const { id } = useParams();
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
@@ -19,7 +18,6 @@ export default function ProjectDetails() {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/events/${id}`
         );
-        //console.log(response);
         setEvent(response.data.data);
       } catch (error) {
         console.error(error);
@@ -40,7 +38,7 @@ export default function ProjectDetails() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleAddEventToCollection = async (e) => {
     e.preventDefault();
     try {
       await axios.post(
@@ -59,7 +57,7 @@ export default function ProjectDetails() {
     <>
       {event && (
         <CustomGrid universe={event.universe}>
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleAddEventToCollection}>
             <button
               className={event.universe === "DC" ? "buttonDc" : "buttonMarvel"}
               type="submit"
