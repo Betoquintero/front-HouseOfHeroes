@@ -11,5 +11,6 @@
   },
   "[javascriptreact]": {
     "editor.formatOnSave": false
-  }
+  },
+  "cSpell.words": ["readmarker"]
 }

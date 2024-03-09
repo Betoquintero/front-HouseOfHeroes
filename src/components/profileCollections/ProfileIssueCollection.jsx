@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProfileIssueCollection ({ issueCollection, handleDeleteIssue, toggleReadStatus }) {
+export default function ProfileIssueCollection ({ collection, handleDeleteIssue, toggleReadStatus }) {
 
   return (
     <div>
@@ -11,8 +11,8 @@ export default function ProfileIssueCollection ({ issueCollection, handleDeleteI
         </p>
       </div>
       <div className="profileIssuesContainer">
-        {issueCollection &&
-          issueCollection.issues.map((issue) => (
+        {collection &&
+          collection.issues.map((issue) => (
             <div key={issue._id} style={{ opacity: issue.readStatus ? 0.5 : 1 }}>
               <div className="card">
                 <Link className="links" to={`/issues/${issue._id}`}>
@@ -22,7 +22,7 @@ export default function ProfileIssueCollection ({ issueCollection, handleDeleteI
                   </div>
                 </Link>
               </div>
-              <button onClick={() => toggleReadStatus(issue._id)}>
+              <button className="deleteEventCollection" onClick={() => toggleReadStatus(issue._id)}>
                 {issue.readStatus ? "Mark as Unread" : "Mark as Read"}
               </button>
               <div className="deleteCollectionContainer">

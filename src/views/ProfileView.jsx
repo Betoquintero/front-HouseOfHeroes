@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import MixedGrid from "../components/grids/MixedGrid";
 import ProfileEventCollection from "../components/profileCollections/ProfileEventCollection"
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import ProfileIssueCollection from "../components/profileCollections/ProfileIssueCollection";
@@ -12,15 +12,8 @@ export default function ProfileView() {
   const { id } = useParams();
   const storedToken = localStorage.getItem("authToken");
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const [collection, setCollection] = useState({
-    userId: "",
-    issues: [],
-    events: [],
-  });
-
-  const [issueCollection, setIssueCollection] = useState({
     userId: "",
     issues: [],
     events: [],
@@ -48,7 +41,7 @@ export default function ProfileView() {
           `${process.env.REACT_APP_API_URL}/collections/issue`,
           { headers: { Authorization: `Bearer ${storedToken}` } }
         );
-        setIssueCollection(response.data.data);
+        setCollection(response.data.data);
       } catch (error) {
         console.error(error);
       }
@@ -76,12 +69,12 @@ export default function ProfileView() {
 
   const handleDeleteIssue = async (issueId) => {
     try {
-      await axios.get(
+      await axios.delete(
         `${process.env.REACT_APP_API_URL}/collections/delete-issue/${issueId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       );
       toast.success("Issue deleted successfully");
-      setIssueCollection((prevCollection) => {
+      setCollection((prevCollection) => {
         const updatedIssues = prevCollection.issues.filter(
           (issue) => issue._id !== issueId
         );
@@ -144,6 +137,11 @@ export default function ProfileView() {
         handleDeleteEvent={handleDeleteEvent}
         toggleReadStatus={toggleReadStatus}
       />
+      <ProfileIssueCollection
+        collection={collection}
+        handleDeleteIssue={handleDeleteIssue}
+        toggleReadStatus={toggleReadStatus}
+      />
       {!collection && (
         <p className="noCollections">
           <strong>
@@ -151,11 +149,6 @@ export default function ProfileView() {
           </strong>
         </p>
       )}
-      <ProfileIssueCollection
-        issueCollection={collection}
-        handleDeleteIssue={handleDeleteIssue}
-        toggleReadStatus={toggleReadStatus}
-      />
     </MixedGrid>
   );
 }
