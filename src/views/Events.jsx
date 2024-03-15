@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Issues() {
+export default function Events() {
   const [events, setEvents] = useState(null);
   const navigate = useNavigate();
 

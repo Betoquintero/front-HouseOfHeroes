@@ -5,7 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function Issues() {
+export default function Parts() {
   const [parts, setParts] = useState(null);
   const { universe } = useParams();
   const navigate = useNavigate();

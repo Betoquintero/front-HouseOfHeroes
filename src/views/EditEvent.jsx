@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MixedGrid from "../components/grids/MixedGrid";
 import axios from "axios";
 
-export default function EditProject() {
+export default function EditEvent() {
   const navigate = useNavigate();
 
   const { id } = useParams();

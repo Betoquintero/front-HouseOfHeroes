@@ -4,7 +4,7 @@ import MixedGrid from "../components/grids/MixedGrid";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-export default function CreateProject() {
+export default function CreateIssue() {
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
   const [issue, setIssue] = useState({
