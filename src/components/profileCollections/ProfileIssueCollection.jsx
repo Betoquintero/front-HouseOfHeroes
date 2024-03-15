@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProfileIssueCollection ({ collection, handleDeleteIssue, toggleReadStatus }) {
+export default function ProfileIssueCollection ({ collection, deleteIssue, toggleReadStatus }) {
 
   return (
     <div>
@@ -26,7 +26,7 @@ export default function ProfileIssueCollection ({ collection, handleDeleteIssue,
                 {issue.readStatus ? "Mark as Unread" : "Mark as Read"}
               </button>
               <div className="deleteCollectionContainer">
-                <button className="deleteEventCollection" onClick={() => handleDeleteIssue(issue._id)}>
+                <button className="deleteEventCollection" onClick={() => deleteIssue(issue._id)}>
                   Delete Issue
                 </button>
               </div>

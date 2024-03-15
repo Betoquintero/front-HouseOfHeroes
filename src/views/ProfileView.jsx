@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useMemo } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import MixedGrid from "../components/grids/MixedGrid";
@@ -49,7 +49,10 @@ export default function ProfileView() {
     getData();
   }, [id, storedToken]);
 
-  const handleDeleteEvent = async (eventId) => {
+  const memoizedCollection = useMemo(() => collection, [collection]);
+
+
+  const deleteEvent = async (eventId) => {
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/collections/delete-event/${eventId}`,
@@ -67,7 +70,7 @@ export default function ProfileView() {
     }
   };
 
-  const handleDeleteIssue = async (issueId) => {
+  const deleteIssue = async (issueId) => {
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/collections/delete-issue/${issueId}`,
@@ -133,20 +136,23 @@ export default function ProfileView() {
         </strong>
       </p>
       <ProfileEventCollection
-        collection={collection}
-        handleDeleteEvent={handleDeleteEvent}
+        collection={memoizedCollection}
+        deleteEvent={deleteEvent}
         toggleReadStatus={toggleReadStatus}
       />
       <ProfileIssueCollection
-        collection={collection}
-        handleDeleteIssue={handleDeleteIssue}
+        collection={memoizedCollection}
+        deleteIssue={deleteIssue}
         toggleReadStatus={toggleReadStatus}
       />
-      {!collection && (
+      {!collection.events.length && (
         <p className="noCollections">
-          <strong>
-            No collections to show, pick one and start collecting!
-          </strong>
+          <strong>No events to show. Visit the events page to start collecting!</strong>
+        </p>
+      )}
+      {!collection.issues.length && (
+        <p className="noCollections">
+          <strong>No issues to show. Visit the issues page to start collecting!</strong>
         </p>
       )}
     </MixedGrid>

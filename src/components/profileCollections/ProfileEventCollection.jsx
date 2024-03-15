@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function ProfileEventCollection({
   collection,
-  handleDeleteEvent,
+  deleteEvent,
   toggleReadStatus,
 }) {
+
   return (
     <div>
       <div className="cardsContainer">
@@ -31,7 +32,7 @@ export default function ProfileEventCollection({
                 <div className="deleteCollectionContainer">
                   <button
                     className="deleteEventCollection"
-                    onClick={() => handleDeleteEvent(event._id)}
+                    onClick={() => deleteEvent(event._id)}
                   >
                     Delete event
                   </button>
