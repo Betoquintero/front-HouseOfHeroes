@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import CustomGrid from "./grids/CustomGrid";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function ProjectDetails() {
+export default function IssueDetails() {
   const { id } = useParams();
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();

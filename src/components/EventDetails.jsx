@@ -5,7 +5,7 @@ import CustomGrid from "./grids/CustomGrid";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function ProjectDetails() {
+export default function EventDetails() {
   const { id } = useParams();
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
